@@ -25,12 +25,7 @@ std::string turkish_number(int number)
     dict[80] = "seksen";
     dict[90] = "doksan";
     
-    if (number > 9)
-        if (number % 10 != 0)
-            result = dict[number / 10 * 10] + " " + dict[number % 10];
-        else
-            result = dict[number / 10 * 10];
-    else 
-        result = dict[number % 10];
-    return result;
+    if (number % 10 != 0 && number > 9)
+        return dict[number / 10 * 10] + " " + dict[number % 10];
+    return dict[number];
 }
