@@ -20,21 +20,9 @@ private:
     std::pmr::polymorphic_allocator<Node> allocator;
 
 public:
-    DoublyLinkedList(std::pmr::memory_resource* memory_resource = std::pmr::get_default_resource());
-    ~DoublyLinkedList();
-
-    void push_back(const T& value);
-    void pop_back();
-    void print() const;
-
-    size_t get_size() const { return size; }
-
-    
-};
-
 class Iterator {
     private:
-        Node* current; 
+        Node* current;
 
     public:
         Iterator(Node* node) : current(node) {}
@@ -58,9 +46,15 @@ class Iterator {
         }
     };
 
-    Iterator begin() { return Iterator(head); }
-    Iterator end() { return Iterator(nullptr); }
+    DoublyLinkedList(std::pmr::memory_resource* memory_resource = std::pmr::get_default_resource());
+    ~DoublyLinkedList();
+
+    void push_back(const T& value);
+    void pop_back();
+    void print() const;
 
     size_t get_size() const { return size; }
 
-
+    Iterator begin() { return Iterator(head); }
+    Iterator end() { return Iterator(nullptr); }
+};
